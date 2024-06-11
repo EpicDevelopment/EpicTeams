@@ -1,0 +1,12 @@
+name: EpicTeams
+version: '1.0.0'
+main: gg.minecrush.epicteams.EpicTeams
+api-version: '1.20'
+author: awel
+commands:
+  team:
+    aliases: teams
+    description: Manage, create & interact with teams.
+  teamadmin:
+    aliases: teammanager
+    description: Manage player's teams!

@@ -1,0 +1,71 @@
+#                          ,----,
+#                        ,/   .`|
+#           ,---,.     ,`   .'  :                                    ____
+#         ,'  .' |   ;    ;     /                                  ,'  , `.
+#       ,---.'   | .'___,/    ,'                                ,-+-,.' _ |
+#       |   |   .' |    :     |                              ,-+-. ;   , ||   .--.--.
+#       :   :  |-, ;    |.';  ;      ,---.      ,--.--.     ,--.'|'   |  ||  /  /    '
+#       :   |  ;/| `----'  |  |     /     \    /       \   |   |  ,', |  |, |  :  /`./
+#       |   :   .'     '   :  ;    /    /  |  .--.  .-. |  |   | /  | |--'  |  :  ;_
+#       |   |  |-,     |   |  '   .    ' / |   \__\/: . .  |   : |  | ,      \  \    `.
+#       '   :  ;/|     '   :  |   '   ;   /|   ," .--.; |  |   : |  |/        `----.   \
+#       |   |    \     ;   |.'    '   |  / |  /  /  ,.  |  |   | |`-'        /  /`--'  /
+#       |   :   .'     '---'      |   :    | ;  :   .'   \ |   ;/           '--'.     /
+#       |   | ,'                   \   \  /  |  ,     .-./ '---'              `--'---'
+#       `----'                      `----'    `--`---'
+#
+#              ,---,                                                      ,--.'|
+#            ,---.'|                                         .---.        |  | :
+#            |   | :                                        /. ./|        :  : '
+#            :   : :        .--,            ,--.--.      .-'-. ' |  ,---. |  ' |
+#            :     |,-.   /_ ./|           /       \    /___/ \: | /     \'  | |
+#            |   : '  |, ' , ' :          .--.  .-. |.-'.. '   ' ./    /  |  | :       and Snowy (lang & contributor)
+#            |   |  / /___/ \: |           \__\/: . /___/ \:     .    ' / '  : |__     and Qeid (lang)
+#            '   : |: |.  \  ' |           ," .--.; .   \  ' .\  '   ;   /|  | '.'|
+#            |   | '/ : \  ;   :          /  /  ,.  |\   \   ' \ '   |  / ;  :    ;
+#            |   :    |  \  \  ;         ;  :   .'   \\   \  |--"|   :    |  ,   /
+#            /    \  /    :  \  \        |  ,     .-./ \   \ |    \   \  / ---`-'
+#            `-'----'      \  ' ;         `--`---'      '---"      `----'
+
+
+
+
+
+
+# Plugin Addons:
+# ~ PlaceholderAPI placeholders:
+#
+# - %(epic)teams_tag% - Player's Team Tag (Null Placeholder changeable in lang file) // TO ADD \\
+# - %(epic)teams_name% - Player's Team Name (Null Placeholder changeable in lang file) // TO ADD \\
+# - %(epic)teams_rank% - Player's Team Rank (Rank Names changeable in lang file) // TO ADD \\
+#
+
+
+# Team Chat Prefix option.
+vault-prefix: true # This requires Vault to work: https://www.spigotmc.org/resources/vault.34315/
+
+
+# Action Announcements:
+
+broadcast-team-creation: true
+broadcast-team-deletion: false
+
+# Team name rules:
+
+team-name-limit: 7
+team-tag-limit: 9
+team-name-shortest: 3
+team-tag-shortest: 3
+banned-names:
+  - nigga
+  - faggot
+  - nigger
+  - hitler
+
+# Team settings
+team-homes: true
+teleport-wait: true
+teleport-time: 5 # Time in seconds
+
+# Team Admin
+admin-permission: "team.admin"

@@ -1,0 +1,228 @@
+#                          ,----,
+#                        ,/   .`|
+#           ,---,.     ,`   .'  :                                    ____
+#         ,'  .' |   ;    ;     /                                  ,'  , `.
+#       ,---.'   | .'___,/    ,'                                ,-+-,.' _ |
+#       |   |   .' |    :     |                              ,-+-. ;   , ||   .--.--.
+#       :   :  |-, ;    |.';  ;      ,---.      ,--.--.     ,--.'|'   |  ||  /  /    '
+#       :   |  ;/| `----'  |  |     /     \    /       \   |   |  ,', |  |, |  :  /`./
+#       |   :   .'     '   :  ;    /    /  |  .--.  .-. |  |   | /  | |--'  |  :  ;_
+#       |   |  |-,     |   |  '   .    ' / |   \__\/: . .  |   : |  | ,      \  \    `.
+#       '   :  ;/|     '   :  |   '   ;   /|   ," .--.; |  |   : |  |/        `----.   \
+#       |   |    \     ;   |.'    '   |  / |  /  /  ,.  |  |   | |`-'        /  /`--'  /
+#       |   :   .'     '---'      |   :    | ;  :   .'   \ |   ;/           '--'.     /
+#       |   | ,'                   \   \  /  |  ,     .-./ '---'              `--'---'
+#       `----'                      `----'    `--`---'
+#
+#              ,---,                                                      ,--.'|
+#            ,---.'|                                         .---.        |  | :
+#            |   | :                                        /. ./|        :  : '
+#            :   : :        .--,            ,--.--.      .-'-. ' |  ,---. |  ' |
+#            :     |,-.   /_ ./|           /       \    /___/ \: | /     \'  | |
+#            |   : '  |, ' , ' :          .--.  .-. |.-'.. '   ' ./    /  |  | :       and Snowy (lang & contributor)
+#            |   |  / /___/ \: |           \__\/: . /___/ \:     .    ' / '  : |__     and Qeid (lang)
+#            '   : |: |.  \  ' |           ," .--.; .   \  ' .\  '   ;   /|  | '.'|
+#            |   | '/ : \  ;   :          /  /  ,.  |\   \   ' \ '   |  / ;  :    ;
+#            |   :    |  \  \  ;         ;  :   .'   \\   \  |--"|   :    |  ,   /
+#            /    \  /    :  \  \        |  ,     .-./ \   \ |    \   \  / ---`-'
+#            `-'----'      \  ' ;         `--`---'      '---"      `----
+
+# Placeholders:
+# %p% - Prefix
+# %player% - Executor (In commands)
+# %target% - "Target" (In commands with sub arguments)
+# %tag% - Clan Tag
+# %name% - Clan Name
+
+# Prefix for the plugin messages
+prefix: "<##2ebff0>&lTEAMS &7»"
+# Prefix for team-related messages
+team-prefix: "<##2ebff0>&lTC &7»"
+
+# This message is sent whenever you reload EpicTeams using /teamadmin reload
+reloaded: "%p% &areloaded teams in %time%ms"
+
+# This is the format for when any player in a clan uses /teams chat <message> or /teams chat to toggle team chat messages
+# Instead of regular messages
+team-chat: "%tp% &7%prefix%%player% &8&l» <##2ebff0>%message%" #%prefix% requires "vault-prefix" option enabled
+
+# This is the message that is sent to any players trying to run /teamadmin commands without sufficient permissions.
+no-permission: "&cYou do not have permission to run that command. Contact an administrator if you believe there is an error."
+
+# This is sent whenever the target in team commands are not online for example when a team mod / owner
+# Tries to invite a new player who is offline using /team invite <target>
+not-online: "&cTarget not online (/team help)"
+
+# This is sent whenever a player fails syntax for any /team command.
+invalid-argument: "&cInvalid arguments! (/team help)"
+
+# This is sent whenever a player fails syntax for any /teamadmin command which is separate to the /team syntax
+invalid-admin-argument: "&cInvalid arguments! (/teamadmin help)"
+
+# This message is sent when a player uses invalid characters or uses blacklisted names in any arguments.
+invalid-characters: "&cInvalid characters in your arguments! (/team help)"
+
+# This is sent when a team owner is unable to create a tag due to character issues via /team create <tag>
+tag-limit: "&cYour tag has to be %limit-shortest%-%limit-longest% characters long"
+
+# This is sent when a team owner is unable to create a team name due to character issues via /team create <tag> <name>
+name-limit: "&cYour name has to be %limit-shortest%-%limit-longest% characters long"
+
+# This is sent whenever a player tries to create a team that already exists
+team-exist: "&cThat team already exists!"
+
+# This is sent whenever a player tries to interact with a team that doesn't exist
+team-no-exist: "&cThat team doesn't exist!"
+
+# This is sent whenever a player who is not the owner of a team tries to perform an owner-specific action
+team-not-owner: "&cYou are not the owner of this team!"
+
+# This is sent whenever a player who is not a moderator or higher tries to perform a moderator-specific action
+team-not-moderator: "&cYou need to be moderator or higher in your team to execute this command."
+
+# This is sent when team chat is enabled
+team-chat-toggle-enable: "%tp% &aenabled team chat!"
+
+# This is sent when team chat is disabled
+team-chat-toggle-disable: "%tp% &cdisabled team chat!"
+
+# This is sent when a player tries to perform a team-related action without being in a team
+not-in-team: "&cYou're not in a team!"
+
+# This is sent when the target player is not in the same team as the executor
+target-not-in-team: "&c%target% is not in your team!"
+
+# This is sent when the target player is already in a team
+target-in-team: "&cThat player is already in a team!"
+
+# This is sent when the target player is already invited to the team
+already-invited: "&cThat player is already invited to the team!"
+
+# This is sent when a team is successfully created
+team-created: "&8» &fCreated your team with the name &7%name%&f!"
+
+# This is sent to announce the creation of a new team
+team-creation: "%p% &7%player% &fcreated a new team named <##2ebff0>%name%&f!"
+
+# This is sent when a team is successfully deleted
+team-deleted: "%p% &fDeleted the &7%name% &fteam"
+
+# This is sent to announce the deletion of a team
+team-deletion: "%p% &f%player% deleted &7%tag% &fteam!"
+
+# This is sent when a player tries to use a banned name
+banned-name: "&cThat name is not allowed!"
+
+# This is sent when a player tries to join a team while already being in one
+already-in-team: "&cYou're already in a team! (/team leave)"
+
+# This is sent when a player tries to join a team without an invitation
+not-invited: "&cYou do not have an invite to that team."
+
+# This is sent when a player tries to promote someone who is already a moderator
+already-a-mod: "&cThat player is already a moderator!"
+
+# This is sent when a player tries to promote someone who is already a member
+already-a-member: "&cThis player is already a member!"
+
+# This is sent when a team owner tries to leave the team without disbanding it first
+disband-first: "&cYou can't leave as you're the owner of this team! Use (/team disband)"
+
+# This is displayed when a player leaves a team
+left-team: "%p% &fYou have left &7%name%&f."
+
+# This is shown to a player when they are invited to a team
+invited-player: "%nl%%p% &fYou were invited to join <##2ebff0>%name%&f! Use &7(/team join %name%) &fto join.%nl%"
+
+# This is broadcasted to the team when a player is invited
+player-invited: "%nl%%p% <##2ebff0>%target% &fhas been invited to the team by &7player&f!%nl%"
+
+# This is broadcasted to the team when a player joins
+player-joined: "%nl%%p% <##2ebff0>%player% &fhas joined the team!%nl%"
+
+# This is broadcasted to the team when a player leaves
+player-left: "%nl%%tp% <##2ebff0>%player% &fhas left the team%nl%"
+
+# This is broadcasted when a player is promoted
+player-promoted: "%nl%%p% <##2ebff0>%target% &7[Member] &fhas been promoted by <##2ebff0>%player% &4[Owner] &fto &eModerator&f.%nl%"
+
+# This is broadcasted when a player is demoted
+player-demoted: "%nl%%p% <##2ebff0>%target% &fhas been demoted by <##2ebff0>%player% &4[Owner] &fto &7Member&f.%nl%"
+
+# This is displayed when a player tries to edit another player's roles without permission
+cant-edit-player: "&cYou cannot edit this player's roles."
+
+# This is broadcasted when a player is kicked from the team
+player-kicked: "%nl%%p% <##2ebff0>%target% &fhas been kicked from the team by <##2ebff0>%player%&f.%nl%"
+
+# This is displayed when a player tries to kick someone they cannot kick
+cant-kick-player: "&cYou cannot kick that player!"
+
+# This is broadcasted when the team ownership is transferred
+team-transfered: "%nl%%p% <##2ebff0>%player% &fhas transferred ownership of the team to <##2ebff0>%target%&f.%nl%"
+
+# This is broadcasted when the team home is updated
+team-home-updated: "%nl%%p% <##2ebff0>%player% &fhas updated the team home to <##2ebff0>%location%"
+
+# This is displayed when teleportation is canceled due to player movement
+canceled-move: "&cTeleportation canceled because you moved"
+
+# This is displayed when a player is being teleported to the team home
+teleporting-player: "<##2ebff0>Teleporting in %time% seconds!"
+
+# This is displayed when a player is successfully teleported to the team home
+teleported-home: "<##2ebff0>Teleported to home location!"
+
+# This is displayed when no team home is set
+no-home: "&cNo home location found!"
+
+# This is the message format for displaying team information
+team-info:
+  message: |
+    &7&m                                                 &7&m
+    &e%tag%'s &finformation: %team_name%
+    
+    &fKills: &7%team_kills%
+    &fDeaths: &7%team_deaths%
+    
+    &fOwner: <##2ebff0>%team_owner%&7
+    &fModerators: 
+     <##2ebff0>%team_mods%&7
+    &fMembers: 
+     <##2ebff0>%team_members%
+    &7&m                                                 &7&m
+
+# This is the message format for displaying the list of team commands and arguments
+team-help:
+  message: |
+    &f
+    &7&m                                                 &7&m
+    <##2ebff0>&lTEAMS HELP &7» &fList of commands and arguments
+    &f
+    &7» &f/team &fcreate <##7e8a8f><name> <tag> &8- &fCreate a new team with a name and tag.
+    &7» &f/team &fdisband &8- &fDisband your team.
+    &7» &f/team &finfo <##7e8a8f>[team] &8- &fGet info on a team or your team.
+    &7» &f/team &fpromote <##7e8a8f><player> &8- &fPromote a player in your team.
+    &7» &f/team &fdemote <##7e8a8f><player> &8- &fDemote a player in your team.
+    &7» &f/team &fchat &8- &fToggle team chat.
+    &7» &f/team &fleave &8- &fLeave your team.
+    &7» &f/team &ftransfer <##7e8a8f><player> &8- &fTransfer ownership of your team.
+    &7» &f/team &fwho <##7e8a8f><player> &8- &fGet info of a player's team.
+    &7» &f/team &finvite <##7e8a8f><player> &8- &fInvite a player to your team.
+    &7» &f/team &fjoin <##7e8a8f><team> &8- &fJoin a team.
+    &7» &f/team &fkick <##7e8a8f><player> &8- &fKick a player from your team.
+    &7&m                                                 &7&m
+    &f
+
+# This is the message format for displaying the list of admin team commands and arguments
+adminteam-help:
+  message: |
+    &f
+    &7&m                                                 &7&m
+    <##2ebff0>&lADMIN TEAMS HELP &7» &fList of commands and arguments
+    &f
+    &7» &f/team &fdelete <##7e8a8f><name> &8- &fForce delete a team.
+    &7» &f/team &freload &8- &fReload the plugin messages & configs.
+    &7» &f/team &fhelp &8- &fGet information about commands.
+    &7&m                                                 &7&m
+    &f
