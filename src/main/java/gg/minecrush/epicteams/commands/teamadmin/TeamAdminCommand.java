@@ -25,6 +25,10 @@ public class TeamAdminCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 0) {
+            sender.sendMessage(messages.getReplacedMessage("invalid-admin-argument"));
+            return false;
+        }
         String subCommand = args[0].toLowerCase();
         Player player = (Player) sender;
         if (player.hasPermission(config.getValue("admin-permission"))){
