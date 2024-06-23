@@ -51,6 +51,8 @@ public final class EpicTeams extends JavaPlugin {
             getLogger().severe("[EpicTeams] Failed to create language file");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+        this.messagesConfig = new Messages(this, config);
+        this.config = new Config(this);
 
 
 
@@ -71,7 +73,7 @@ public final class EpicTeams extends JavaPlugin {
         }
 
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new TeamsExpansion(this, sqLite).register();
+            new TeamsExpansion(this, sqLite, messagesConfig).register();
         } else {
             getLogger().severe("-------------------------------------");
             getLogger().severe("While looking for PlaceholderAPI");
@@ -96,8 +98,7 @@ public final class EpicTeams extends JavaPlugin {
                 getLogger().severe(" ");
                 getLogger().severe("-------------------------------------");
             }
-            this.messagesConfig = new Messages(this, config);
-            this.config = new Config(this);
+
 
             this.getServer().getPluginManager().registerEvents(new CombatListener(sqLite), this);
             this.getServer().getPluginManager().registerEvents(new JoinListener(sqLite), this);
