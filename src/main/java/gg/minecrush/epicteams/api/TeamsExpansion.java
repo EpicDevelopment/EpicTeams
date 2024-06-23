@@ -61,7 +61,7 @@ public class TeamsExpansion extends PlaceholderExpansion {
             try {
                 String team = sqLite.getTeam(player);
                 if(team != null) {
-                    return messages.getReplacedMessage("placeholder-prefix").replace("{PREFIX}", team).replace("{UPPERCASE_TEAM}", team.toUpperCase().replace("{PROPERCASE_TEAM}", capitalizeFirstLetter(team)));
+                    return messages.getReplacedMessage("placeholder-prefix").replace("{TEAM}", team).replace("{UPPERCASE_TEAM}", team.toUpperCase().replace("{PROPERCASE_TEAM}", capitalizeFirstLetter(team)));
                 } else {
                     return "";
                 }
