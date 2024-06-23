@@ -39,6 +39,11 @@ prefix: "<##2ebff0>&lTEAMS &7»"
 # Prefix for team-related messages
 team-prefix: "<##2ebff0>&lTC &7»"
 
+# This message is what you would use in TAB & Chat.
+# {UPPERCASE_TEAM}, {TEAM} & {PROPERCASE_TEAM}
+placeholder-prefix: "&7[&F{TEAM}&7] " # if there is no team it will respond with ""
+
+
 # This message is sent whenever you reload EpicTeams using /teamadmin reload
 reloaded: "%p% &areloaded teams in %time%ms"
 
