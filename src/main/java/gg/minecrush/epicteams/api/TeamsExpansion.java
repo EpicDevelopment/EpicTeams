@@ -2,6 +2,7 @@ package gg.minecrush.epicteams.api;
 
 import gg.minecrush.epicteams.EpicTeams;
 import gg.minecrush.epicteams.database.sqlite.SQLite;
+import gg.minecrush.epicteams.database.yml.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
@@ -16,9 +17,12 @@ public class TeamsExpansion extends PlaceholderExpansion {
 
     private final SQLite sqLite;
 
-    public TeamsExpansion(EpicTeams plugin, SQLite sqLite) {
+    private final Messages messages;
+
+    public TeamsExpansion(EpicTeams plugin, SQLite sqLite, Messages messages) {
         this.plugin = plugin;
         this.sqLite = sqLite;
+        this.messages = messages;
     }
 
     @Override
@@ -45,6 +49,19 @@ public class TeamsExpansion extends PlaceholderExpansion {
                 String team = sqLite.getTeam(player);
                 if(team != null) {
                     return team;
+                } else {
+                    return "";
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        if(params.equalsIgnoreCase("prefix")) {
+            try {
+                String team = sqLite.getTeam(player);
+                if(team != null) {
+                    return messages.getReplacedMessage("placeholder-prefix").replace("{PREFIX}", team).replace("{UPPERCASE_TEAM}", team.toUpperCase().replace("{PROPERCASE_TEAM}", capitalizeFirstLetter(team)));
                 } else {
                     return "";
                 }
@@ -99,5 +116,12 @@ public class TeamsExpansion extends PlaceholderExpansion {
             }
         }
         return null;
+    }
+
+    public static String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }
