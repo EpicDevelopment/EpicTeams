@@ -1,5 +1,5 @@
 name: EpicTeams
-version: '${version}'
+version: '1.2.0'
 main: gg.minecrush.epicteams.EpicTeams
 api-version: '1.20'
 author: awel
