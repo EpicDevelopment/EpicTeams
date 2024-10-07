@@ -26,16 +26,21 @@ public class CombatListener implements Listener {
             killer = (OfflinePlayer) event.getEntity().getKiller();
         }
         try {
-            if (player != null) {
-                String team = sqLite.getTeam(player);
-                if (team != null) {
-                    sqLite.updateTeamDeaths(team, sqLite.getTeamDeaths(team) + 1);
+            if (sqLite.playerExists(player.getName())) {
+                if (player != null) {
+                    String team = sqLite.getTeam(player);
+                    if (team != null) {
+                        sqLite.updateTeamDeaths(team, sqLite.getTeamDeaths(team) + 1);
+                    }
                 }
             }
-            if (killer != null) {
-                String team = sqLite.getTeam(killer);
-                if (team != null) {
-                    sqLite.updateTeamKills(team, sqLite.getTeamKills(team) + 1);
+
+            if (sqLite.playerExists(killer.getName())) {
+                if (killer != null) {
+                    String team = sqLite.getTeam(killer);
+                    if (team != null) {
+                        sqLite.updateTeamKills(team, sqLite.getTeamKills(team) + 1);
+                    }
                 }
             }
         } catch (SQLException e) {
