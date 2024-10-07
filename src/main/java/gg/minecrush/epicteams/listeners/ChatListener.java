@@ -31,12 +31,14 @@ public class ChatListener implements Listener {
         Player p = e.getPlayer();
         String message = e.getMessage();
         try {
-            if (sqLite.getTeamchat(p).equals(true)){
-                if (!sqLite.getTeam(p).isEmpty()){
-                    e.setCancelled(true);
-                    sqLite.teamAnnounce(sqLite.getTeam(p), messages.getReplacedMessage("team-chat").replace("%player%", p.getDisplayName()).replace("%message%", message).replace("%prefix%", color.c(replaceHexColors(epicTeams.getPlayerPrefix(p)))));
-                } else {
-                    sqLite.updatePlayerteamchat(p, false);
+            if (sqLite.playerExists(p.getName())) {
+                if (sqLite.getTeamchat(p).equals(true)){
+                    if (!sqLite.getTeam(p).isEmpty()){
+                        e.setCancelled(true);
+                        sqLite.teamAnnounce(sqLite.getTeam(p), messages.getReplacedMessage("team-chat").replace("%player%", p.getDisplayName()).replace("%message%", message).replace("%prefix%", color.c(replaceHexColors(epicTeams.getPlayerPrefix(p)))));
+                    } else {
+                        sqLite.updatePlayerteamchat(p, false);
+                    }
                 }
             }
         } catch (SQLException e1) {
