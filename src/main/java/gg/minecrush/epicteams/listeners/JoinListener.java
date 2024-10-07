@@ -18,9 +18,7 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         try {
-            if (!sqLite.playerExists(player.getUniqueId().toString())) {
-                sqLite.registerPlayer(player);
-
+            if (sqLite.playerExists(player.getName())) {
                 if (!sqLite.getName(player).equals(player.getDisplayName())){
                     sqLite.updatePlayername(player, player.getDisplayName());
                 }
