@@ -46,6 +46,9 @@ public class TeamsExpansion extends PlaceholderExpansion {
     public @Nullable String onRequest(OfflinePlayer player, String params) {
         if(params.equalsIgnoreCase("team")) {
             try {
+                if (!sqLite.playerExists(player.getName())){
+                    return "";
+                }
                 String team = sqLite.getTeam(player);
                 if(team != null) {
                     return team;
@@ -59,6 +62,9 @@ public class TeamsExpansion extends PlaceholderExpansion {
 
         if(params.equalsIgnoreCase("prefix")) {
             try {
+                if (!sqLite.playerExists(player.getName())){
+                    return "";
+                }
                 String team = sqLite.getTeam(player);
                 if(team != null) {
                     return messages.getReplacedMessage("placeholder-prefix").replace("{TEAM}", team).replace("{UPPERCASE_TEAM}", team.toUpperCase().replace("{PROPERCASE_TEAM}", capitalizeFirstLetter(team)));
@@ -72,6 +78,9 @@ public class TeamsExpansion extends PlaceholderExpansion {
 
         if(params.equalsIgnoreCase("tag")) {
             try {
+                if (!sqLite.playerExists(player.getName())){
+                    return "";
+                }
                 String team = sqLite.getTeamDisplayName(sqLite.getTeam(player));
                 if(team != null) {
                     return team;
@@ -84,6 +93,9 @@ public class TeamsExpansion extends PlaceholderExpansion {
         }
         if(params.equalsIgnoreCase("kills")) {
             try {
+                if (!sqLite.playerExists(player.getName())){
+                    return "";
+                }
                 if (sqLite.teamExists(sqLite.getTeam(player))) {
                     int team = sqLite.getTeamKills(sqLite.getTeam(player));
                     if (team > 0) {
@@ -101,6 +113,9 @@ public class TeamsExpansion extends PlaceholderExpansion {
 
         if(params.equalsIgnoreCase("deaths")) {
             try {
+                if (!sqLite.playerExists(player.getName())){
+                    return "";
+                }
                 if (sqLite.teamExists(sqLite.getTeam(player))){
                     int team = sqLite.getTeamDeaths(sqLite.getTeam(player));
                     if(team > 0) {
