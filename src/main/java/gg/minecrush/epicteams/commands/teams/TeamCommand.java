@@ -149,9 +149,13 @@ public class TeamCommand implements CommandExecutor {
             if (sqLite.teamExists(name)) {
                 player.sendMessage(messages.getReplacedMessage("team-exist"));
             } else {
-                if (!sqLite.getTeam(player).isBlank()) {
+                if (!sqLite.getTeam(player).isBlank()||!sqLite.playerExists(player.getName())) {
                     player.sendMessage(messages.getReplacedMessage("already-in-team"));
                     return;
+                }
+
+                if (!sqLite.playerExists(player.getName())){
+                    sqLite.registerPlayer(player);
                 }
 
                 sqLite.registerTeam(name, displayName, player.getUniqueId().toString());
@@ -173,6 +177,11 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+            if (!sqLite.playerExists(player.getName())) {
+                player.sendMessage(messages.getReplacedMessage("team-no-exist"));
+                return;
+            }
+
             String name = sqLite.getTeam(player);
             if (name == null) {
                 player.sendMessage(messages.getReplacedMessage("team-no-exist"));
@@ -202,6 +211,11 @@ public class TeamCommand implements CommandExecutor {
         try {
             String team;
             if (args.length < 2) {
+
+                if (!sqLite.playerExists(player.getName())) {
+                    player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                    return;
+                }
                 team = sqLite.getTeam(player);
                 if (team.isBlank()) {
                     player.sendMessage(messages.getReplacedMessage("not-in-team"));
@@ -251,6 +265,12 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
 
             String team = sqLite.getTeam(player);
@@ -301,6 +321,12 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
 
             String team = sqLite.getTeam(player);
@@ -351,6 +377,12 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
 
             String team = sqLite.getTeam(player);
@@ -413,6 +445,12 @@ public class TeamCommand implements CommandExecutor {
 
     public void handleChatCommand(Player player, String[] args) {
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             String playerTeam = sqLite.getTeam(player);
             if (playerTeam == null || playerTeam.isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
@@ -440,6 +478,12 @@ public class TeamCommand implements CommandExecutor {
 
     private void handleLeaveCommand(Player player) {
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             String playerTeam = sqLite.getTeam(player);
             if (playerTeam.isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
@@ -478,6 +522,12 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             Player target = Bukkit.getPlayer(args[1]);
             if (target == null) {
                 player.sendMessage(messages.getReplacedMessage("not-online"));
@@ -542,6 +592,11 @@ public class TeamCommand implements CommandExecutor {
                 return;
             }
 
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             if (sqLite.getTeam(target).isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
                 return;
@@ -590,6 +645,12 @@ public class TeamCommand implements CommandExecutor {
         }
 
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             String teamName = sqLite.getTeam(player);
             if (teamName.isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
@@ -625,6 +686,12 @@ public class TeamCommand implements CommandExecutor {
             return;
         }
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             if (!sqLite.getTeam(player).isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("already-in-team"));
                 return;
@@ -651,6 +718,12 @@ public class TeamCommand implements CommandExecutor {
 
     public void handleSetHomeCommand(Player player){
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             if (sqLite.getTeam(player).isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
                 return;
@@ -681,6 +754,12 @@ public class TeamCommand implements CommandExecutor {
 
     public void handleHomeCommand(Player player) {
         try {
+
+            if (!sqLite.playerExists(player.getName())){
+                player.sendMessage(messages.getReplacedMessage("not-in-team"));
+                return;
+            }
+
             String team = sqLite.getTeam(player);
             if (team.isBlank()) {
                 player.sendMessage(messages.getReplacedMessage("not-in-team"));
